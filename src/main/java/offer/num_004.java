@@ -2,6 +2,8 @@ package offer;
 
 import util.TreeNode;
 
+import java.util.Arrays;
+
 public class num_004 {
     /**
      * @Author Luckid
@@ -12,6 +14,18 @@ public class num_004 {
      * @Date 16:19 2021/5/31
      **/
     public TreeNode reConstructBinaryTree(int [] pre, int [] in) {
-
+        if(pre.length == 0 || in.length == 0){
+            return null;
+        }
+        TreeNode root = new TreeNode(pre[0]);
+        // 先在中序遍历中找到根节点，再递归构建根节点的左子树和右子树
+        for(int i = 0; i < in.length; i++){
+            if(in[i] == pre[0]){
+                root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, i + 1), Arrays.copyOfRange(in, 0, i));
+                root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i+1, pre.length), Arrays.copyOfRange(in, i+1, in.length));
+                break;
+            }
+        }
+        return root;
     }
 }
