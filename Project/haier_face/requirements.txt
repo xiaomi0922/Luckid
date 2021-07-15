@@ -1,0 +1,13 @@
+numpy
+opencv-python
+flask
+flask_apscheduler
+flask_sqlalchemy
+flask_cors
+pymysql
+tqdm
+Pillow
+wget
+gunicorn
+gevent
+requests
